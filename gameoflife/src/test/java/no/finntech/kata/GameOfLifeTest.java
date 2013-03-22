@@ -21,4 +21,13 @@ public class GameOfLifeTest {
         gameOfLife.bangBig(Arrays.asList(new Point(2, 2), new Point(8, 8)));
         assertThat(gameOfLife.getLiveCount()).isEqualTo(2);
     }
+
+    @Test
+    public void testAnylivecellwithfewerthantwoliveneighboursdiesasifcausedbyunderpopulation(){
+        GameOfLife gameOfLife = new GameOfLife(10, 10);
+        gameOfLife.bangBig(Arrays.asList(new Point(2, 2), new Point(8, 8)));
+        gameOfLife.tick();
+        assertThat(gameOfLife.getLiveCount()).isEqualTo(0);
+
+    }
 }
