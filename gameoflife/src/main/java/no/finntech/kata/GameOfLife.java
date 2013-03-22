@@ -21,6 +21,7 @@ public class GameOfLife {
     }
 
     public void bangBig(java.util.List<Point> points) {
+
         for (Point point : points) {
             gameBoard[point.y][point.x] = true;
         }
@@ -78,7 +79,7 @@ public class GameOfLife {
         if(isNeighbourAlive(i + 1, j + 1)) {
             liveCount++;
         }
-        return liveCount < 2;
+        return liveCount < 2 || liveCount > 3;
     }
 
     private boolean isNeighbourAlive(int i, int j) {
@@ -91,6 +92,24 @@ public class GameOfLife {
 
     private int getHeight() {
         return gameBoard.length;
+    }
+
+
+    public void print(){
+        System.out.println();
+        for (boolean[] row : gameBoard) {
+            for (boolean b : row) {
+                if(b){
+                    System.out.print("x ");
+
+                } else {
+                    System.out.print("- ");
+                }
+            }
+            System.out.println();
+        }
+        System.out.println();
+
     }
 
 

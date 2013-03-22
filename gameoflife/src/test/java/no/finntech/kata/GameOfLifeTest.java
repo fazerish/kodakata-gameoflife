@@ -34,10 +34,13 @@ public class GameOfLifeTest {
     @Test
     public void testAnylivecellwithmorethanthreeliveneighboursdiesasifbyovercrowding(){
         GameOfLife gameOfLife = new GameOfLife(10, 10);
+        gameOfLife.print();
         gameOfLife.bangBig(Arrays.asList(new Point(2, 2), new Point(8, 8), new Point(7, 8), new Point(9, 8), new Point(8, 7),
                 new Point(8, 9)));
+        gameOfLife.print();
         gameOfLife.tick();
-        assertThat(gameOfLife.getLiveCount()).isEqualTo(0);
+        gameOfLife.print();
+        assertThat(gameOfLife.getLiveCount()).isEqualTo(4);
 
     }
 }
