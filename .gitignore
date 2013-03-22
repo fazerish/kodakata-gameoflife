@@ -1,6 +1,7 @@
-*.class
-
-# Package Files #
-*.jar
-*.war
-*.ear
+*.iml
+*.iws
+*.ipr
+target/
+*/overlays/
+.idea/
+*/*.iml
