@@ -40,6 +40,58 @@ public class GameOfLife {
     }
 
     public void tick() {
-
+        for (int i = 0; i < gameBoard.length; i++) {
+            boolean[] row = gameBoard[i];
+            for (int j = 0; j < row.length; j++) {
+                if(row[j]){
+                    if(shouldCellDie(i, j)) {
+                        row[j] = false;
+                    }
+                }
+            }
+        }
     }
+
+    private boolean shouldCellDie(int i, int j) {
+        int liveCount = 0;
+        if(isNeighbourAlive(i - 1, j - 1)) {
+            liveCount++;
+        }
+        if(isNeighbourAlive(i - 1, j)) {
+            liveCount++;
+        }
+        if(isNeighbourAlive(i - 1, j + 1)) {
+            liveCount++;
+        }
+        if(isNeighbourAlive(i, j - 1)) {
+            liveCount++;
+        }
+        if(isNeighbourAlive(i, j + 1)) {
+            liveCount++;
+        }
+        if(isNeighbourAlive(i + 1, j - 1)) {
+            liveCount++;
+        }
+        if(isNeighbourAlive(i + 1, j)) {
+            liveCount++;
+        }
+        if(isNeighbourAlive(i + 1, j + 1)) {
+            liveCount++;
+        }
+        return liveCount < 2;
+    }
+
+    private boolean isNeighbourAlive(int i, int j) {
+        return i >= 0 && i < getHeight() && j >= 0 && j < getWidth() && gameBoard[i][j];
+    }
+
+    private int getWidth() {
+        return gameBoard[0].length;
+    }
+
+    private int getHeight() {
+        return gameBoard.length;
+    }
+
+
 }
